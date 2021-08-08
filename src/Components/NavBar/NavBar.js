@@ -4,7 +4,7 @@ import './NavBar.css';
 
 const menuItems = [
     {
-        nombre: "Home",
+        nombre: "Inicio",
         className: "nav-link active",
         url: ""
     },

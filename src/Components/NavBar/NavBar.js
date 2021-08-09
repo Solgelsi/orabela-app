@@ -4,7 +4,7 @@ import './NavBar.css';
 
 const menuItems = [
     {
-        nombre: "Inicio",
+        nombre: "Home",
         className: "nav-link active",
         url: ""
     },
@@ -33,8 +33,8 @@ const NavBar = () => {
                 </a>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        {menuItems.map((menuItem) => {
-                            return <li className="nav-item">
+                        {menuItems.map((menuItem, i) => {
+                            return <li key={i} className="nav-item">
                                 <a className={menuItem.className} aria-current="page" href={menuItem.url}>{menuItem.nombre}</a>
                             </li>
                         })}

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ItemDetail = ({ producto }) => {
 
-    const { id, title, price, description, categoriaNombre, url } = producto;
+    const { title, price, description, url } = producto;
 
     return (
         <div className="container mt-5">

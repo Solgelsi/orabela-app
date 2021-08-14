@@ -1,21 +1,25 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import ItemCount from '../ItemCount/ItemCount';
 import './Item.css';
 
 const Item = ({ item }) => {
-
     const { id, title, price, url, description, stock } = item;
-
-    function onAdd(compra) {        
+    const history = useHistory();
+    
+    const onAdd = (compra) => {        
         swal(`Has agregado ${compra} items del producto ${title} a tu carrito`);
     };
+    const goToDetail = () => {
+        history.push(`/item/${id}`);
+    }
 
     return (
         <div className="card text-center border-primary mb-3">
             <img className="card-img-top" src={url} />
             <div className="card-body">
-                <h5 className="card-title">{title}</h5>
+                <h5 className="card-title link-primary" onClick={goToDetail}>{title}</h5>
                 <p className="card-text">{description}</p>
             </div>
             <div className="card-footer text-muted">

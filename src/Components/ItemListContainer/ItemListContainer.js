@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { taskPulsera } from '../../Apis/apis/pulseraApi.js';
-import { taskAnillos } from '../../Apis/apis/anilloApi';
+import { getProductos, getProductosXCategoria } from '../../Apis/apis/productosApi';
+import groupBy from 'lodash/groupBy';
+import { useParams } from 'react-router-dom';
 import ItemList from './ItemList/ItemList';
 
-const ItemListContainer = () => {
-    const [pulseras, setPulseras] = useState([]);
-    const [anillos, setAnillos] = useState([]);
-
+const ItemListContainer = ({greatingMsg}) => {
+    const [productos, setProductos] = useState([]);
+    // const [anillos, setAnillos] = useState([]);
+    const {id} = useParams();
     /**
-     * funcion que va a buscar por unica vez luego de que se renderize el componente
-     * todas las pulseras y anillos
+     * funcion que va a buscar los productos dependiendo de la ruta que se active
+     * ya que si desde un link o si el usuario ingreso una ruta particular
+     * este componente debe buscar los prodeuctos filtrados
      */
     useEffect(() => {
-        taskPulsera.then(result => { setPulseras(result) });
-        taskAnillos.then(result => { setAnillos(result) });
-    }, []);
-
+        if(id){
+            getProductosXCategoria(id).then(result => { setProductos(groupBy(result, (item) => item.categoriaNombre))});
+        }
+        else{
+            getProductos.then(result => { setProductos(groupBy(result, (item) => item.categoriaNombre))});
+        }
+    }, [id]);
 
     return (
         <div>
-            <div className="text-center m-4">
-                <h2>Pulseras</h2>
+            <div>
+                <h1 className="text-center p-3">{greatingMsg}</h1>
             </div>
             <div>
-                <ItemList items={pulseras} />
-            </div>
-            <div className="text-center m-4">
-                <h2>Anillos</h2>
-            </div>
-            <div>
-                <ItemList items={anillos} />
+                {Object.keys(productos).map((prod, index) => {
+                    return <ItemList key={index} items={productos[prod]} nombreCategoria={prod}/>
+                })}
             </div>
         </div>
     );

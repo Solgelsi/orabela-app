@@ -8,7 +8,6 @@ import Loader from '../Loader/Loader';
 const ItemListContainer = ({ greatingMsg }) => {
     const [productos, setProductos] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [anillos, setAnillos] = useState([]);
     const { id } = useParams();
     /**
      * funcion que va a buscar los productos dependiendo de la ruta que se active

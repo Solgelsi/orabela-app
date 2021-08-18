@@ -4,6 +4,7 @@ import NavBar from './NavBar/NavBar';
 import NotFound from './NotFound/NotFound';
 import ItemListContainer from './ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
+import Cart from './Cart/Cart';
 
 const App = () => {
     return ( 
@@ -21,6 +22,7 @@ const App = () => {
                         <ItemListContainer greatingMsg="Bienvenido a Orabela Joyas" />
                     </Route>
                     <Route exact path="/item/:id" component={ItemDetailContainer}/>
+                    <Route exact path="/Cart" component={Cart}/>
                     <Route path="*" component={NotFound}/>
                 </Switch>
                 <footer></footer>

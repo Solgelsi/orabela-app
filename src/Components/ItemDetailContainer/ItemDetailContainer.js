@@ -11,8 +11,8 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         getProductoXId(id).then(result => {
-            SetLoading(false);
             SetProducto(result)
+            SetLoading(false);
         });
     }, [id]);
 

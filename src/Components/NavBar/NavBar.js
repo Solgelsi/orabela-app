@@ -20,6 +20,11 @@ const menuItems = [
         className: "nav-link",
         url: "/category/2"
     },
+    {
+        nombre: "Carrito",
+        className: "nav-link",
+        url: "/Cart"
+    },
 ];
 
 

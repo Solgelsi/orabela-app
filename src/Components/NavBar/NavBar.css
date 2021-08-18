@@ -5,3 +5,6 @@
 .navbar-brand{
     font-style: italic;
 }
+.activeNav{
+    color:#0043ff !important;
+}

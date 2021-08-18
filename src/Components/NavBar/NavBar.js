@@ -1,6 +1,6 @@
 import React from 'react';
 import CartWidget from '../CartWidget/CartWidget';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './NavBar.css';
 
@@ -29,12 +29,12 @@ const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/" >ORABELA TIENDA DE JOYAS</Link>
+                <NavLink exact activeClassName="activeNav" className="navbar-brand" to="/" >ORABELA TIENDA DE JOYAS</NavLink>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         {menuItems.map((menuItem, i) => {
                             return <li key={i} className="nav-item">
-                                <Link className={menuItem.className} to={menuItem.url}>{menuItem.nombre}</Link>
+                                <NavLink exact activeClassName="activeNav" className={menuItem.className} to={menuItem.url}>{menuItem.nombre}</NavLink>
                             </li>
                         })}
                     </ul>

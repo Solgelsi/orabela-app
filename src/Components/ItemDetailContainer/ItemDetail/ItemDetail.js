@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { CartContext } from '../../../Context/cartContext';
 import ItemCount from '../../ItemListContainer/ItemCount/ItemCount';
 import './ItemDetail.css';
 
 const ItemDetail = ({ producto }) => {
-    const [compra, setCompra] = useState(0);
     const history = useHistory();
-    const { title, price, descriptionLong, img, stock } = producto;
+    const { addPurchase, isInCart } = useContext(CartContext);
+    const { id, title, price, descriptionLong, img, stock } = producto;
 
     const onAdd = (compra) => {
-        setCompra(compra);
+        addPurchase({ item: producto, compra });
     };
+
     const goToCart = () => {
         history.push(`/Cart`);
     }
@@ -37,8 +39,8 @@ const ItemDetail = ({ producto }) => {
                             </div>
                             <div className="col-6 mt-2">
                                 <span style={(stock === 0) ? {} : { display: 'none' }}>No hay stock disponible de este producto</span>
-                                {(stock !== 0 && compra === 0) && <ItemCount stockDisponible={stock} onAdd={onAdd} inicial={1}></ItemCount>}
-                                {(compra !== 0) && (<button type="button" className="btn btn-primary" onClick={goToCart}>Terminar mi compra</button>)}
+                                {(stock !== 0 && !isInCart(id)) && <ItemCount stockDisponible={stock} onAdd={onAdd} inicial={1}></ItemCount>}
+                                {(isInCart(id)) && (<button type="button" className="btn btn-primary" onClick={goToCart}>Terminar mi compra</button>)}
                             </div>
                         </div>
                     </div>

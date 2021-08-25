@@ -25,7 +25,7 @@ const ItemDetail = ({ producto }) => {
             </div>
             <div className="row mt-4">
                 <div className="col-6 text-center">
-                    <img src={img}></img>
+                    <img src={img} alt={title}></img>
                 </div>
                 <div className="col-6 text-center">
                     <h3>{title}</h3>

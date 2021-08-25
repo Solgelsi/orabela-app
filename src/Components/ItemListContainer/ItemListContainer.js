@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import groupBy from 'lodash/groupBy';
-import { getProductos, getProductosXCategoria } from '../../Apis/apis/productosApi';
+import { getProductosXCategoria, getProductos } from '../../Apis/apis/productosApi';
 import ItemList from './ItemList/ItemList';
 import Loader from '../Loader/Loader';
 
@@ -23,7 +23,7 @@ const ItemListContainer = ({ greatingMsg }) => {
             });
         }
         else {
-            getProductos.then(result => {
+            getProductos().then(result => {
                 setLoading(false);
                 setProductos(groupBy(result, (item) => item.categoriaNombre))
             });

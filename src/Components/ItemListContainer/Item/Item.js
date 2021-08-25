@@ -17,7 +17,7 @@ const Item = ({ item }) => {
 
     return (
         <div className="card text-center border-primary mb-3">
-            <img className="card-img-top" src={url} />
+            <img className="card-img-top" alt={title} src={url} />
             <div className="card-body">
                 <h5 className="card-title link-primary" onClick={goToDetail}>{title}</h5>
                 <p className="card-text">{description}</p>

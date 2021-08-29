@@ -25,8 +25,12 @@ export const CartProvider = ({children}) => {
         setPurchase([]);
     }
 
+    const getItemCount = () => {
+        return purchases.reduce((val, current) => val + current.compra,0);
+    }
+
     return (
-        <CartContext.Provider value={{purchases, addPurchase, removeItem, isInCart, clear}}>
+        <CartContext.Provider value={{purchases, addPurchase, removeItem, isInCart, clear, getItemCount}}>
             {children}
         </CartContext.Provider>
     )

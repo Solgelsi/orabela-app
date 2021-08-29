@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ItemCount.css';
 
-const ItemCount = ({ stockDisponible, inicial, onAdd }) => {
+const ItemCount = ({ stockDisponible, inicial, onButtonClick, hideButton = false, onCantidadChange }) => {
     const [stock, SetStock] = useState(1);
     const [compra, SetCompra] = useState(inicial);
 
@@ -12,11 +12,17 @@ const ItemCount = ({ stockDisponible, inicial, onAdd }) => {
     function restar() {
         if (compra > 1) {
             SetCompra(compra - 1);
+            if(onCantidadChange){
+                onCantidadChange(compra - 1);
+            }
         }
     }
     function sumar() {
         if (stock > compra) {
             SetCompra(compra + 1);
+            if(onCantidadChange){
+                onCantidadChange(compra + 1);
+            }
         }
     }
 
@@ -35,9 +41,10 @@ const ItemCount = ({ stockDisponible, inicial, onAdd }) => {
                     </button>
                 </span>
             </div>
-            <div>
-                <button type="button" onClick={() => onAdd(compra)} className="btn btn-primary mt-2">Agregar al carrito</button>
-            </div>
+            {!hideButton && <div>
+                <button type="button" onClick={() => onButtonClick(compra)} className="btn btn-primary mt-2">Agregar al carrito</button>
+            </div>}
+
         </div>
     );
 

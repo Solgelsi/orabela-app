@@ -1,0 +1,40 @@
+.cart_list {
+    border: solid 1px #e8e8e8;
+    box-shadow: 0px 5px 9px rgb(0 0 0 / 45%);
+}
+
+.cart_item {
+    padding-right: 3em
+}
+
+.cart_item_image {
+    width: 7.5em;
+    height: 7.5em;
+    float: left
+}
+
+.cart_item_image img {
+    max-width: 100%
+}
+
+.cart_item_info {
+    width: calc(100% - 133px);
+    float: left;
+    padding-top: 1em;
+}
+
+.cart_item_name {
+    margin-left: 7.53%;
+    flex: 0.3 0.2;
+}
+.itemName{
+    cursor: pointer;
+}
+.itemName:hover{
+    text-decoration: underline;
+    color: blue;    
+}
+
+.btnDelete{
+    align-self: flex-end;
+}

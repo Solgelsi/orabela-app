@@ -14,7 +14,7 @@ const CartItem = ({ purchase }) => {
         addPurchase({ item, cantidad });
     };
 
-    const onDeleteItem = (cantidad) => {
+    const onDeleteItem = () => {
         removeItem(item.id);
     };
 
@@ -35,7 +35,7 @@ const CartItem = ({ purchase }) => {
                         </div>
                         <div className="text-center">
                             <div className="fs-6 fw-bold">Cantidad</div>
-                            <ItemCount stockDisponible={item.stock} onCantidadChange={onCantidadChange} hideButton={true} inicial={cantidad}></ItemCount>
+                            <ItemCount key={item.id} stockDisponible={item.stock} onCantidadChange={onCantidadChange} hideButton={true} inicial={cantidad}></ItemCount>
                         </div>
                         <div className=" text-end">
                             <div className="fs-6 fw-bold">Precio</div>

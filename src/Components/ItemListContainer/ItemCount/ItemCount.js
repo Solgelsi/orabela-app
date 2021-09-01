@@ -4,7 +4,7 @@ import './ItemCount.css';
 const ItemCount = ({ stockDisponible, inicial, onButtonClick, hideButton = false, onCantidadChange }) => {
     const [stock, SetStock] = useState(1);
     const [compra, SetCompra] = useState(inicial);
-
+    
     useEffect(() => {
         SetStock(stockDisponible);
     }, []);

@@ -13,7 +13,7 @@ const CartWidget = () => {
     }, [purchases])
 
     return (
-        <Link to="/Cart" className="cart position-relative d-inline-flex">
+        <Link to="/Cart" className="cart  position-relative d-inline-flex">
             <i className="fas fa fa-shopping-cart fa-lg"></i>
             {cartNumber !== 0 && <span className="cart-basket d-flex align-items-center justify-content-center">{cartNumber}</span>}
         </Link>

@@ -11,6 +11,9 @@ const Cart = () => {
     const goBack = () => {
         history.push("/");
     }
+    const goCheckout = () => {
+        history.push("/Checkout");
+    }
     const onClear = () => {
         clear();
     }
@@ -42,7 +45,7 @@ const Cart = () => {
                                     </div>
                                 </div>
                                 <div className="cart_buttons"> <button type="button" onClick={goBack} className="btn btn-outline-primary btn-lg me-4">Continuar comprando</button>
-                                    <button type="button" className="btn btn-success btn-lg">Ir al Checkout</button> </div>
+                                    <button type="button" className="btn btn-success btn-lg" onClick={goCheckout}>Ir al Checkout</button> </div>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ import NotFound from './NotFound/NotFound';
 import ItemListContainer from './ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
 import Cart from './Cart/Cart';
+import Checkout from './Cart/Checkout/Checkout';
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
                         </Route>
                         <Route exact path="/item/:id" component={ItemDetailContainer} />
                         <Route exact path="/Cart" component={Cart} />
+                        <Route exact path="/Checkout" component={Checkout} />
                         <Route path="*" component={NotFound} />
                     </Switch>
                     <footer></footer>

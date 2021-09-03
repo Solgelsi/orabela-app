@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import groupBy from 'lodash/groupBy';
-import { getProductosXCategoria, getProductos } from '../../Apis/apis/productosApi';
 import ItemList from './ItemList/ItemList';
 import Loader from '../Loader/Loader';
-import { addDoc } from "firebase/firestore";
 import { productosSnapshot, productosXCategoria } from '../../Apis/apis/productosFirebase';
 
 const ItemListContainer = ({ greatingMsg }) => {
-    const [productos, setProductos] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [noItemFound, setnoItemFound] = useState(false);
     const { id } = useParams();
@@ -26,7 +24,7 @@ const ItemListContainer = ({ greatingMsg }) => {
                     if (results.size === 0) {
                         setnoItemFound(true);
                     }
-                    setProductos(groupBy(
+                    setProducts(groupBy(
                         results.docs.map(product => ({
                             id: product.id,
                             ...product.data()
@@ -36,17 +34,12 @@ const ItemListContainer = ({ greatingMsg }) => {
                 .finally(() => setLoading(false));
         }
         else {
-
-            // addDoc(productosRef(), { 
-            //     capital: true 
-            // });
-
             productosSnapshot()
                 .then(results => {
                     if (results.size === 0) {
                         setnoItemFound(true);
                     }
-                    setProductos(groupBy(
+                    setProducts(groupBy(
                         results.docs.map(product => ({
                             id: product.id,
                             ...product.data()
@@ -69,8 +62,8 @@ const ItemListContainer = ({ greatingMsg }) => {
                     </div>
                 }
                 {loading && <Loader />}
-                {!loading && (Object.keys(productos).map((prod, index) => {
-                    return <ItemList key={index} items={productos[prod]} nombreCategoria={prod} />
+                {!loading && (Object.keys(products).map((prod, index) => {
+                    return <ItemList key={index} items={products[prod]} categoryName={prod} />
                 }))}
                 { }
             </div>

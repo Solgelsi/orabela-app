@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CartWidget.css';
 import { CartContext } from '../../Context/cartContext';
-import { useState } from 'react/cjs/react.development';
 
 const CartWidget = () => {
     const { purchases, getItemCount } = useContext(CartContext);

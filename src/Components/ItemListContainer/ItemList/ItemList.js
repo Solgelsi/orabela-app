@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from '../Item/Item';
 
-const ItemList = ({ items, nombreCategoria }) => {
+const ItemList = ({ items, categoryName }) => {
 
     function* chunks(arr, n) {
         for (let i = 0; i < arr.length; i += n) {
@@ -14,7 +14,7 @@ const ItemList = ({ items, nombreCategoria }) => {
     return (
         <div>
             <div className="text-center m-4">
-                <h2>{nombreCategoria}</h2>
+                <h2>{categoryName}</h2>
             </div>
             <div className="container">
                 {itemsArray.map((items, i) => {

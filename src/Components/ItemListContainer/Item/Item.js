@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CartContext } from '../../../Context/cartContext';
 import swal from 'sweetalert';
@@ -6,13 +6,13 @@ import ItemCount from '../ItemCount/ItemCount';
 import './Item.css';
 
 const Item = ({ item }) => {
-    const {addPurchase} = useContext(CartContext);
+    const { addPurchase } = useContext(CartContext);
     const { id, title, price, url, description, stock } = item;
     const history = useHistory();
-    
-    const onAdd = (cantidad) => {        
-        swal(`Has agregado ${cantidad} items del producto ${title} a tu carrito`);
-        addPurchase({ item, cantidad });
+
+    const onAdd = (quantity) => {
+        swal(`Has agregado ${quantity} items del producto ${title} a tu carrito`);
+        addPurchase({ item, quantity });
     };
     const goToDetail = () => {
         history.push(`/item/${id}`);
@@ -29,7 +29,7 @@ const Item = ({ item }) => {
                 <h6>$ {price}</h6>
                 <span style={(stock === 0) ? {} : { display: 'none' }}>No hay stock disponible de este producto</span>
                 <div>
-                    { (stock !== 0) && <ItemCount stockDisponible={stock} onButtonClick={onAdd} inicial={1}></ItemCount> }
+                    {(stock !== 0) && <ItemCount availableStock={stock} onButtonClick={onAdd} initial={1}></ItemCount>}
                 </div>
             </div>
         </div>

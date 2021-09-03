@@ -8,10 +8,10 @@ import './CartItem.css';
 const CartItem = ({ purchase }) => {
     const { addPurchase, removeItem } = useContext(CartContext);
     const history = useHistory();
-    const { item, cantidad } = purchase;
+    const { item, quantity } = purchase;
 
-    const onCantidadChange = (cantidad) => {
-        addPurchase({ item, cantidad });
+    const onChange = (newQuantity) => {
+        addPurchase({ item, quantity: newQuantity });
     };
 
     const onDeleteItem = () => {
@@ -35,7 +35,7 @@ const CartItem = ({ purchase }) => {
                         </div>
                         <div className="text-center">
                             <div className="fs-6 fw-bold">Cantidad</div>
-                            <ItemCount key={item.id} stockDisponible={item.stock} onCantidadChange={onCantidadChange} hideButton={true} inicial={cantidad}></ItemCount>
+                            <ItemCount key={item.id} availableStock={item.stock} onChange={onChange} hideButton={true} initial={quantity}></ItemCount>
                         </div>
                         <div className=" text-end">
                             <div className="fs-6 fw-bold">Precio</div>
@@ -43,7 +43,7 @@ const CartItem = ({ purchase }) => {
                         </div>
                         <div className=" text-end">
                             <div className="fs-6 fw-bold">Subtotal</div>
-                            <div className="mt-2 fs-5">${item.price * cantidad}</div>
+                            <div className="mt-2 fs-5">${item.price * quantity}</div>
                         </div>
                         <div className="btnDelete">
                             <button className="btn btn-link" onClick={onDeleteItem}>Eliminar</button>

@@ -4,13 +4,13 @@ import { CartContext } from '../../../Context/cartContext';
 import ItemCount from '../../ItemListContainer/ItemCount/ItemCount';
 import './ItemDetail.css';
 
-const ItemDetail = ({ producto }) => {
+const ItemDetail = ({ product }) => {
     const history = useHistory();
     const { addPurchase, isInCart } = useContext(CartContext);
-    const { id, title, price, descriptionLong, img, stock } = producto;
+    const { id, title, price, descriptionLong, img, stock } = product;
 
-    const onAdd = (cantidad) => {
-        addPurchase({ item: producto, cantidad });
+    const onAdd = (quantity) => {
+        addPurchase({ item: product, quantity });
     };
 
     const goToCart = () => {
@@ -39,7 +39,7 @@ const ItemDetail = ({ producto }) => {
                             </div>
                             <div className="col-6 mt-2">
                                 <span style={(stock === 0) ? {} : { display: 'none' }}>No hay stock disponible de este producto</span>
-                                {(stock !== 0 && !isInCart(id)) && <ItemCount stockDisponible={stock} onButtonClick={onAdd} inicial={1}></ItemCount>}
+                                {(stock !== 0 && !isInCart(id)) && <ItemCount availableStock={stock} onButtonClick={onAdd} initial={1}></ItemCount>}
                                 {(isInCart(id)) && (<button type="button" className="btn btn-primary" onClick={goToCart}>Terminar mi compra</button>)}
                             </div>
                         </div>

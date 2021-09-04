@@ -7,6 +7,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 ReactDom.render(
     <div>
-        <main><App /></main>
+        <App />
     </div>,
     document.getElementById('root'));

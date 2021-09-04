@@ -22,6 +22,7 @@ export const CartProvider = ({ children }) => {
 
     const clear = () => {
         setPurchase([]);
+        setBuyer({});
     }
 
     const getItemCount = () => {

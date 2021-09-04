@@ -16,7 +16,7 @@ const ItemList = ({ items, categoryName }) => {
             <div className="text-center m-4">
                 <h2>{categoryName}</h2>
             </div>
-            <div className="container">
+            <div className="container d-grid gap-3">
                 {itemsArray.map((items, i) => {
                     return <div key={i} className="row">
                         {items.map(item => {

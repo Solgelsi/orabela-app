@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../../../Context/cartContext';
+import CurrencyFormater from '../../../Helpers/CurrencyFormater/CurrencyFormater';
 import CheckOutDetail from './CheckOutDetail';
 
 const CheckoutDetailContainer = () => {
@@ -12,7 +13,7 @@ const CheckoutDetailContainer = () => {
                     <p>Producto</p>
                 </div>
                 <div className=" pl-0 flex-sm-col col-auto my-auto fw-bold">
-                    <p>Cantidad</p>
+                    <p>Cant</p>
                 </div>
                 <div className=" pl-0 flex-sm-col col-auto my-auto fw-bold">
                     <p>Precio</p>
@@ -29,7 +30,7 @@ const CheckoutDetailContainer = () => {
                             <p className="mb-1"><b>Subtotal</b></p>
                         </div>
                         <div className="flex-sm-col col-auto">
-                            <p className="mb-1"><b>$ {getSubTotal()}</b></p>
+                            <p className="mb-1"><b>{<CurrencyFormater price={getSubTotal()} />}</b></p>
                         </div>
                     </div>
                     <div className="row justify-content-between">
@@ -45,7 +46,7 @@ const CheckoutDetailContainer = () => {
                             <p><b>Total</b></p>
                         </div>
                         <div className="flex-sm-col col-auto">
-                            <p className="mb-1"><b>$ {getTotal()}</b></p>
+                            <p className="mb-1"><b>{<CurrencyFormater price={getTotal()} />}</b></p>
                         </div>
                     </div>
                     <hr className="my-0" />

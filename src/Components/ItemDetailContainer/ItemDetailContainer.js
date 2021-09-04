@@ -19,8 +19,7 @@ const ItemDetailContainer = () => {
 
     return (
         <div>
-            {loading && <Loader />}
-            {!loading && <ItemDetail product={product} />}
+            {loading ? <Loader /> : <ItemDetail product={product} />}
         </div>
     );
 }

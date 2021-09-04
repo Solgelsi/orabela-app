@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrencyFormater from '../../../Helpers/CurrencyFormater/CurrencyFormater';
 
 const CheckOutDetail = ({ purchase }) => {
     const { quantity, item: { title, img, description, price } } = purchase;
@@ -20,10 +21,10 @@ const CheckOutDetail = ({ purchase }) => {
                 <p className="boxed-1">{quantity}</p>
             </div>
             <div className=" pl-0 flex-sm-col col-auto my-auto">
-                <p className="boxed-1">$ {price}</p>
+                <p className="boxed-1">{<CurrencyFormater price={price} />}</p>
             </div>
             <div className=" pl-0 flex-sm-col col-auto my-auto ">
-                <p><b>$ {price * quantity}</b></p>
+                <p><b>{<CurrencyFormater price={price * quantity} />}</b></p>
             </div>
         </div>
         <hr className="my-2" />

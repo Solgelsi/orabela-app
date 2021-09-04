@@ -7,6 +7,7 @@ import ItemListContainer from './ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
 import Cart from './Cart/Cart';
 import Checkout from './Cart/Checkout/Checkout';
+import './main.css';
 
 const App = () => {
 
@@ -30,7 +31,11 @@ const App = () => {
                         <Route exact path="/Checkout" component={Checkout} />
                         <Route path="*" component={NotFound} />
                     </Switch>
-                    <footer></footer>
+                    <footer className="text-muted mt-5 py-2">
+                        <div className="container">
+                            <p className="mb-1 fw-bold">Orabella e-commerce 2021</p>
+                        </div>
+                    </footer>
                 </BrowserRouter>
             </CartProvider>
         </div>

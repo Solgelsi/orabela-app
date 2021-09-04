@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CartContext } from '../../../Context/cartContext';
+import CurrencyFormater from '../../Helpers/CurrencyFormater/CurrencyFormater';
 import ItemCount from '../../ItemListContainer/ItemCount/ItemCount';
 import './ItemDetail.css';
 
@@ -25,7 +26,7 @@ const ItemDetail = ({ product }) => {
             </div>
             <div className="row mt-4">
                 <div className="col-6 text-center">
-                    <img src={img} alt={title}></img>
+                    <img src={img} className="img-fluid" alt={title}></img>
                 </div>
                 <div className="col-6 text-center">
                     <h3>{title}</h3>
@@ -34,7 +35,7 @@ const ItemDetail = ({ product }) => {
                         <div className="row">
                             <div className="col-6">
                                 <div className="precio">
-                                    <span>Price: </span><span>${price}</span>
+                                    <span>Precio: </span><span><CurrencyFormater price={price} /></span>
                                 </div>
                             </div>
                             <div className="col-6 mt-2">

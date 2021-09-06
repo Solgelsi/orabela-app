@@ -7,6 +7,10 @@ const CheckoutDetailContainer = () => {
     const { purchases, getSubTotal, getTotal } = useContext(CartContext);
 
     return (<div>
+        <div className="card-header pb-0">
+            <h5 className="">Detalles de la compra</h5>
+            <hr className="my-0" />
+        </div>
         <div className="mt-1 card-body">
             <div className="row justify-content-between">
                 <div className="col-auto col-md-7 fw-bold">

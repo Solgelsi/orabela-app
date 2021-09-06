@@ -50,7 +50,6 @@ const CartItem = ({ purchase }) => {
                             <button className="btn btn-link" onClick={onDeleteItem}>Eliminar</button>
                         </div>
                     </div>
-
                 </li>
             </ul>
         </div>

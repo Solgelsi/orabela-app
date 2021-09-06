@@ -7,11 +7,17 @@ import { productoXId } from '../../Apis/apis/productosFirebase';
 const ItemDetailContainer = () => {
     const [product, SetProduct] = useState({});
     const [loading, SetLoading] = useState(true);
+    const [noItemFound, setnoItemFound] = useState(false);
     const { id } = useParams();
 
     useEffect(() => {
+        SetLoading(true);
+        setnoItemFound(false);
         productoXId(id)
             .then((result) => {
+                if (!result.data()) {
+                    setnoItemFound(true);
+                }
                 SetProduct({ id: result.id, ...result.data() });
             })
             .finally(() => SetLoading(false));
@@ -19,7 +25,13 @@ const ItemDetailContainer = () => {
 
     return (
         <div>
-            {loading ? <Loader /> : <ItemDetail product={product} />}
+            {loading ? <Loader />
+                : noItemFound ?
+                    <div className="text-center mt-5">
+                        <h1>No se encontró el producto que desea consultar.</h1>
+                    </div>
+                    : <ItemDetail product={product} />
+            }
         </div>
     );
 }

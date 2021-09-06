@@ -15,6 +15,7 @@ import CurrencyFormater from '../../Helpers/CurrencyFormater/CurrencyFormater';
 const Checkout = () => {
     const { getTotal, purchases, buyer, clear } = useContext(CartContext);
     const [loading, setLoading] = useState(false);
+    const [validForm, setValidForm] = useState(false);
     const [orderNumber, setOrderNumber] = useState('');
     const history = useHistory();
 
@@ -37,7 +38,6 @@ const Checkout = () => {
         addDoc(ordenesRef(), {
             newOrder
         })
-            //no se porque Prettier mueve todo este bloque
             .then(response => {
                 const batch = writeBatch(db());
                 purchases.forEach(({ quantity, item: { id, stock } }) => {
@@ -51,6 +51,10 @@ const Checkout = () => {
             })
             .catch(error => swal("Ocurrio un error al intentar procesar tu orden"))
             .finally(() => setLoading(false));
+    }
+
+    const onChangeForm = (valid) => {
+        setValidForm(valid);
     }
 
     return (
@@ -72,22 +76,14 @@ const Checkout = () => {
                                     <div className="checkout_card p-5">
                                         <div className="row justify-content-around">
                                             <div className="col-md-5">
-                                                <div className="card-header pb-0">
-                                                    <h5 className="">Detalles del comprador</h5>
-                                                    <hr className="my-0" />
-                                                </div>
-                                                <CheckoutForm />
+                                                <CheckoutForm onChangeForm={onChangeForm} />
                                                 <div className="row m-4 text-center">
                                                     <div className="col">
-                                                        <button type="button" onClick={onBuy} className="btn btn-lg btn-success">PAGAR <CurrencyFormater price={getTotal()} /></button>
+                                                        <button type="button" onClick={onBuy} disabled={!validForm} className="btn btn-lg btn-success">PAGAR <CurrencyFormater price={getTotal()} /></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-md-5">
-                                                <div className="card-header pb-0">
-                                                    <h5 className="">Detalles de la compra</h5>
-                                                    <hr className="my-0" />
-                                                </div>
                                                 <CheckoutDetailContainer />
                                             </div>
                                         </div>

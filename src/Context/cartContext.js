@@ -4,7 +4,13 @@ export const CartContext = React.createContext([]);
 
 export const CartProvider = ({ children }) => {
     const [purchases, setPurchase] = useState([]);
-    const [buyer, setBuyer] = useState({});
+    const [buyer, setBuyer] = useState({
+        nombre: '',
+        apellido: '',
+        mail: '',
+        edad: '',
+        direccion: ''
+    });
 
     const addPurchase = (purchase) => {
         isInCart(purchase.item.id) ?

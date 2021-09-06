@@ -14,9 +14,6 @@ const ItemDetail = ({ product }) => {
         addPurchase({ item: product, quantity });
     };
 
-    const goToCart = () => {
-        history.push(`/Cart`);
-    }
     return (
         <div className="container mt-5">
             <div className="row">
@@ -41,7 +38,7 @@ const ItemDetail = ({ product }) => {
                             <div className="col-6 mt-2">
                                 <span style={(stock === 0) ? {} : { display: 'none' }}>No hay stock disponible de este producto</span>
                                 {(stock !== 0 && !isInCart(id)) && <ItemCount availableStock={stock} onButtonClick={onAdd} initial={1}></ItemCount>}
-                                {(isInCart(id)) && (<button type="button" className="btn btn-primary" onClick={goToCart}>Terminar mi compra</button>)}
+                                {(isInCart(id)) && (<button type="button" className="btn btn-primary" onClick={() => history.push(`/Cart`)}>Terminar mi compra</button>)}
                             </div>
                         </div>
                     </div>

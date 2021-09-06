@@ -1,16 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import FormField from './FormField';
 import { CartContext } from '../../../../Context/cartContext';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ onChangeForm }) => {
     const { buyer, setBuyer } = useContext(CartContext);
+    const [confEmail, setConfEmail] = useState('');
     const { nombre, apellido, mail, edad, direccion } = buyer;
 
     const handleChange = (evt) => {
         setBuyer({ ...buyer, [evt.target.name]: evt.target.value });
     }
+    const handleChangeEmail = (evt) => {
+        setConfEmail(evt.target.value);
+    }
+
+    useEffect(() => {
+        onChangeForm(!Object.values(buyer).some(v => v === "") && (mail === confEmail));
+    }, [buyer, confEmail]);
+
 
     return (<div>
+        <div className="card-header pb-0">
+            <h5 className="">Detalles del comprador</h5>
+            <hr className="my-0" />
+        </div>
         <div className="mt-4">
             <div className="row no-gutters">
                 <div className="col-sm-6 pr-sm-2">
@@ -25,7 +38,7 @@ const CheckoutForm = () => {
                     <FormField inputConfig={{ type: "email", label: "Email", name: "mail", placeholder: "Ingrese su e-mail", value: mail, handleChange }}></FormField>
                 </div>
                 <div className="col-sm-6 pr-sm-2">
-                    <FormField inputConfig={{ type: "email", label: "Confirmación email", name: "conf-mail", placeholder: "Ingrese nuevamente su e-mail", value: '', handleChange }}></FormField>
+                    <FormField inputConfig={{ type: "email", label: "Confirmación email", name: "conf-mail", placeholder: "Ingrese nuevamente su e-mail", value: confEmail, handleChange: handleChangeEmail }}></FormField>
                 </div>
             </div>
             <div className="row no-gutters mt-2">

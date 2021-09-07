@@ -32,6 +32,7 @@ const Checkout = () => {
                     },
                     quantity
                 })),
+            date: new Date(),
             total: getTotal()
         };
 

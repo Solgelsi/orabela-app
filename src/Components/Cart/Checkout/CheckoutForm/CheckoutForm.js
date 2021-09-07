@@ -5,7 +5,7 @@ import { CartContext } from '../../../../Context/cartContext';
 const CheckoutForm = ({ onChangeForm }) => {
     const { buyer, setBuyer } = useContext(CartContext);
     const [confEmail, setConfEmail] = useState('');
-    const { nombre, apellido, mail, edad, direccion } = buyer;
+    const { nombre, apellido, mail, edad, telefono } = buyer;
 
     const handleChange = (evt) => {
         setBuyer({ ...buyer, [evt.target.name]: evt.target.value });
@@ -46,7 +46,7 @@ const CheckoutForm = ({ onChangeForm }) => {
                     <FormField inputConfig={{ type: "number", label: "Edad", name: "edad", placeholder: "Ingrese su edad", value: edad, handleChange }}></FormField>
                 </div>
                 <div className="col-sm-6 pr-sm-2">
-                    <FormField inputConfig={{ type: "text", label: "Dirección", name: "direccion", placeholder: "Ingrese su dirección", value: direccion, handleChange }}></FormField>
+                    <FormField inputConfig={{ type: "number", label: "Teléfono", name: "telefono", placeholder: "Ingrese su teléfono", value: telefono, handleChange }}></FormField>
                 </div>
             </div>
 

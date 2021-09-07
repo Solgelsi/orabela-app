@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
         apellido: '',
         mail: '',
         edad: '',
-        direccion: ''
+        telefono: ''
     });
 
     const addPurchase = (purchase) => {

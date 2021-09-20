@@ -1,17 +1,18 @@
 import React from 'react';
 import CurrencyFormater from '../../../Helpers/CurrencyFormater/CurrencyFormater';
+import './CheckOutDetail.css';
 
 const CheckOutDetail = ({ purchase }) => {
     const { quantity, item: { title, img, description, price } } = purchase;
 
     return (<div>
         <div className="row justify-content-between">
-            <div className="col-auto col-md-7">
+            <div className="col-auto col-md-4">
                 <div className="media flex-column flex-sm-row"> <img className="img-fluid" alt={title} src={img} width="100" height="100" />
                     <div className="media-body my-auto">
                         <div className="row ">
                             <div className="col-auto">
-                                <p className="mb-0"><b>{title}</b></p><small className="text-muted">{description}</small>
+                                <p className="mb-0"><b>{title}</b></p><small className="text-muted truncate">{description}</small>
                             </div>
                         </div>
                     </div>

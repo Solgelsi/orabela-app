@@ -13,7 +13,7 @@ const CheckoutDetailContainer = () => {
         </div>
         <div className="mt-1 card-body">
             <div className="row justify-content-between">
-                <div className="col-auto col-md-7 fw-bold">
+                <div className="col-auto col-md-4 fw-bold">
                     <p>Producto</p>
                 </div>
                 <div className=" pl-0 flex-sm-col col-auto my-auto fw-bold">

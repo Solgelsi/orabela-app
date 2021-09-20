@@ -74,9 +74,9 @@ const Checkout = () => {
                                         <button type="button" onClick={() => history.push("/")} className="btn btn-outline-primary text-center btn-lg me-4 mt-3">Volver a inicio</button>
                                     </div>
                                     :
-                                    <div className="checkout_card p-5">
+                                    <div className="checkout_card p-2 pt-4">
                                         <div className="row justify-content-around">
-                                            <div className="col-md-5">
+                                            <div className="col-md-4">
                                                 <CheckoutForm onChangeForm={onChangeForm} />
                                                 <div className="row m-4 text-center">
                                                     <div className="col">
@@ -84,7 +84,7 @@ const Checkout = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-md-5">
+                                            <div className="col-md-6">
                                                 <CheckoutDetailContainer />
                                             </div>
                                         </div>
